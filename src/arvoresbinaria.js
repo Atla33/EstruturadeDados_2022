@@ -85,6 +85,64 @@ class avlbinaria{
             return this.EncontrarMenorNo(Node.esquerda);
         }
     }
+
+    height() {
+		if (this.root === null) return -1;
+		// altura da árvore vazia
+		else {
+			return this.heightNode(this.root);
+		}
+	}
+
+    heightNode(raiz) {
+		if (raiz === null) return -1;
+		// altura da árvore vazia
+		else {
+			let altura_esquerda = this.heightNode(raiz.esq);
+			let altura_direita = this.heightNode(raiz.dir);
+			if (altura_esquerda < altura_direita) {
+				return altura_direita + 1;
+			} else {
+				return altura_esquerda + 1;
+			}
+		}
+	}
+
+    preOrder() {
+		this.preOrderNode(this.root);
+	}
+
+	preOrderNode(node) {
+		if (node !== null) {
+			console.log(node.key);
+			this.preOrderNode(node.esq);
+			this.preOrderNode(node.dir);
+		}
+	}
+
+    inOrder() {
+		this.inOrderNode(this.root);
+	}
+
+	inOrderNode(node) {
+		if (node !== null) {
+			this.inOrderNode(node.esq);
+			console.log(node.key);
+			this.inOrderNode(node.dir);
+		}
+	}
+
+    posOrder() {
+		this.posOrderNode(this.root);
+	}
+
+	posOrderNode(node) {
+		if (node !== null) {
+			this.posOrderNode(node.esq);
+			this.posOrderNode(node.dir);
+			console.log(node.key);
+		}
+	}
 }
 
 
